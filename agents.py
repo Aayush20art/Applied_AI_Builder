@@ -1,15 +1,7 @@
 import streamlit as st
 import os
 
-# ==========================================================
-# API Key
-# ==========================================================
-
 os.environ["MISTRAL_API_KEY"] = st.secrets["MISTRAL_API_KEY"]
-
-# ==========================================================
-# Imports
-# ==========================================================
 
 from langchain.agents import create_agent
 from langchain_mistralai import ChatMistralAI
@@ -26,19 +18,12 @@ from tools import (
     save_report,
 )
 
-# ==========================================================
-# LLM
-# ==========================================================
-
 llm = ChatMistralAI(
     model="mistral-small-2506",
     temperature=0
 )
 
-# ==========================================================
 # 1. Inspection Agent
-# ==========================================================
-
 def build_inspection_agent():
 
     return create_agent(
@@ -50,10 +35,8 @@ def build_inspection_agent():
         ]
     )
 
-# ==========================================================
-# 2. Thermal Agent
-# ==========================================================
 
+# 2. Thermal Agent
 def build_thermal_agent():
 
     return create_agent(
@@ -65,9 +48,7 @@ def build_thermal_agent():
         ]
     )
 
-# ==========================================================
 # 3. Image Extraction Agent
-# ==========================================================
 
 def build_image_agent():
 
@@ -78,10 +59,7 @@ def build_image_agent():
         ]
     )
 
-# ==========================================================
 # 4. Metadata Agent
-# ==========================================================
-
 def build_metadata_agent():
 
     return create_agent(
@@ -92,10 +70,7 @@ def build_metadata_agent():
         ]
     )
 
-# ==========================================================
 # Merge Agent
-# ==========================================================
-
 merge_prompt = ChatPromptTemplate.from_messages(
 
 [
@@ -184,10 +159,7 @@ Observations
 
 root_chain = root_prompt | llm | StrOutputParser()
 
-# ==========================================================
 # Severity Agent
-# ==========================================================
-
 severity_prompt = ChatPromptTemplate.from_messages(
 
 [
@@ -226,10 +198,8 @@ Observations
 
 severity_chain = severity_prompt | llm | StrOutputParser()
 
-# ==========================================================
-# Recommendation Agent
-# ==========================================================
 
+# Recommendation Agent
 recommendation_prompt = ChatPromptTemplate.from_messages(
 
 [
@@ -265,10 +235,8 @@ Root Cause
 
 recommendation_chain = recommendation_prompt | llm | StrOutputParser()
 
-# ==========================================================
-# DDR Writer Agent
-# ==========================================================
 
+# DDR Writer Agent
 writer_prompt = ChatPromptTemplate.from_messages(
 
 [
@@ -331,10 +299,8 @@ Recommendations
 
 writer_chain = writer_prompt | llm | StrOutputParser()
 
-# ==========================================================
-# Review Agent
-# ==========================================================
 
+# Review Agent
 review_prompt = ChatPromptTemplate.from_messages(
 
 [

@@ -4,19 +4,12 @@ import os
 
 from pipeline import run_ddr_pipeline
 
-# ============================================================
-# Page Config
-# ============================================================
-
 st.set_page_config(
     page_title="AI DDR Report Generator",
     page_icon="🏠",
     layout="wide"
 )
 
-# ============================================================
-# Header
-# ============================================================
 
 st.title("🏠 AI DDR Report Generator")
 
@@ -31,9 +24,6 @@ using a **Multi-Agent AI Workflow**.
 
 st.divider()
 
-# ============================================================
-# Sidebar
-# ============================================================
 
 with st.sidebar:
 
@@ -60,9 +50,6 @@ with st.sidebar:
     st.success("10. Review Agent")
 
 
-# ============================================================
-# Upload Section
-# ============================================================
 
 col1, col2 = st.columns(2)
 

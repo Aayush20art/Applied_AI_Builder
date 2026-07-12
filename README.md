@@ -10,7 +10,7 @@ The system extracts observations, thermal findings, metadata, and images from bo
 
 👉 **Live Application**
 
-**:contentReference[oaicite:0]{index=0}**
+https://appliedaibuilder-asjbvvtguzgqehbypwecw5.streamlit.app/
 
 ---
 
